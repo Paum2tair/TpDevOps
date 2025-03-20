@@ -3,15 +3,13 @@ exports.handler = async (event) => {
     const parisTime = new Date().toLocaleString("fr-FR", { timeZone: "Europe/Paris" });
 
     // Nom à afficher
-    const name = "Antoine NOEL";
+    const name = "Leantoine PONOEL";
 
     // Réponse de l'API
-    const response = {
-        message: `Bonjour le monde, ici ${name} à ${parisTime}!`
-    };
+    const response = `Bonjour le monde, ici ${name} à ${parisTime}!`;
 
     return {
         statusCode: 200,
-        body: JSON.stringify(response)
+        body: response
     };
 };
