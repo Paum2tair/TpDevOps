@@ -47,6 +47,11 @@ jobs:
       - name: copy terraform.tfstate from state branch to main branch
         run: cp state_branch/tfstate/terraform.tfstate terraform
 
+      - name: Terraform Apply
+        if : success()
+        run: terraform apply -auto-approve tfplan
+        working-directory: terraform
+        
       - name: Commit and push updated state to state branch
         run: |
           git config user.name "GitHub Actions"
