@@ -28,7 +28,7 @@ resource "aws_lambda_function" "lambda" {
   filename      = "lambda.zip"
   role          = aws_iam_role.lambda.arn
   handler       = "lambda.handler"
-  runtime       = "nodejs14.x"
+  runtime       = "nodejs20.x"
 }
 
 
