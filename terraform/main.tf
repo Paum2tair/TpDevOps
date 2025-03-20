@@ -16,7 +16,7 @@ provider "aws" {
 //----------Compressage de lambda.py----------//
 data "archive_file" "lambda" {
   type        = "zip"
-  source_dir  = "../lambda.py"
+  source_dir  = "../lambda.js"
   output_path = "lambda.zip"
 }
 
@@ -56,4 +56,13 @@ resource "aws_iam_role" "lambda" {
 resource "aws_api_gateway_rest_api" "api" {
   name        = "groupe1-api"
   description = "This is my API for my lambda"
+
+}
+
+
+//----------Output de l'URL de l'API Gateway----------//
+
+output "api_gateway_url" {
+  value = aws_api_gateway_rest_api.api.execution_arn
+  description = "L'URL d'invocation de l'API Gateway"
 }
