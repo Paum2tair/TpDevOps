@@ -44,6 +44,12 @@ jobs:
         run: terraform plan -out=tfplan
         working-directory: terraform
 
+      - name: test
+        run: cat terraform.tfstate
+        
+      - name: test2
+        run: ls
+
       - name: Terraform Apply
         if : success()
         run: terraform apply -auto-approve tfplan
