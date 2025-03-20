@@ -45,7 +45,10 @@ jobs:
         working-directory: terraform
         
       - name: List files in tfstate directory
-        run: ls tfstate
+        run: ls tfstate/tfstate
+
+      - name : test du tfstate
+        run : cat tfstate/tfstate/terraform.tfstate
 
       - name: Terraform Apply
         if : success()
