@@ -44,16 +44,8 @@ jobs:
         run: terraform plan -out=tfplan
         working-directory: terraform
         
-      - name: test2
-        run: ls
-
-      - name: ls tfstate
-        run: ls
-        working-directory: tfstate
-
-      - name : test cat state
-        run : cat terraform.tfstate
-        working-directory: tfstate
+      - name: List files in tfstate directory
+        run: ls tfstate
 
       - name: Terraform Apply
         if : success()
