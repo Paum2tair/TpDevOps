@@ -46,14 +46,9 @@ jobs:
 
       - name: copy terraform.tfstate from state branch to main branch
         run: cp state_branch/tfstate/terraform.tfstate terraform
-        
-      - name: List files in terraform directory
-        run: ls terraform
 
-      - name: Terraform Apply
-        if : success()
-        run: terraform apply -auto-approve tfplan
-        working-directory: terraform
+      - name: cat
+        run : cat terraform/terraform.tfstate
 
       - name: Commit and push updated state to state branch
         run: |
