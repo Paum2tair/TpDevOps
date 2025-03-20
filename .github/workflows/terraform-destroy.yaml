@@ -36,6 +36,9 @@ jobs:
         run: terraform validate
         working-directory: terraform
 
+      - name: copy terraform.tfstate from state branch to main branch
+        run: cp state_branch/tfstate/terraform.tfstate terraform
+
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
         working-directory: terraform
