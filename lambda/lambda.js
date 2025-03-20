@@ -6,7 +6,7 @@ exports.handler = async (event) => {
     const name = "Leantoine PONOEL";
 
     // Réponse de l'API
-    const response = `Bonjour le monde, ici ${name} à ${parisTime}!`;
+    const response = `Bonjour ce monde, ici ${name} à ${parisTime}!`;
 
     return {
         statusCode: 200,
