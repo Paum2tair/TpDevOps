@@ -49,6 +49,11 @@ jobs:
 
       - name: cat
         run : cat terraform/terraform.tfstate
+        
+      - name: Terraform Apply
+        if : success()
+        run: terraform apply -auto-approve tfplan
+        working-directory: terraform
 
       - name: Commit and push updated state to state branch
         run: |
@@ -58,4 +63,4 @@ jobs:
           git add terraform/terraform.tfstate
           git commit -m "Update terraform state"
           git push origin state
-        working-directory: tfstate
+        working-directory: state_branch
