@@ -7,8 +7,7 @@ exports.handler = async (event) => {
 
     // Réponse de l'API
     const response = {
-        message: `Bonjour, ${name}!`,
-        date_time: parisTime
+        message: `Bonjour le monde, ici ${name} à ${parisTime}!`
     };
 
     return {

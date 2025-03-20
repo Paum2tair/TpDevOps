@@ -13,7 +13,7 @@ provider "aws" {
   region  = "eu-west-3"
 }
 
-//----------Compressage de lambda.py----------//
+//----------Compression de lambda.js----------//
 data "archive_file" "lambda" {
   type        = "zip"
   source_dir  = "../lambda.js"
