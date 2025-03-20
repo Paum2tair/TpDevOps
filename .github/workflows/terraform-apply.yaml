@@ -12,19 +12,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Test files
-        run: ls
-
-      - name: Change directory to terraform
-        run: cd terraform
-
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.0.7
-
-      - name: Test files
-        run: ls
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
@@ -33,24 +24,19 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-3
 
-      - name: Change directory to terraform
-        run: cd terraform
-
       - name: Terraform Init
         run: terraform init
-
-      - name: Test files
-        run: ls
+        working-directory: terraform
 
       - name: Terraform Validate
         run: terraform validate
-
-      - name: Test files
-        run: ls
+        working-directory: terraform
 
       - name: Terraform Plan
         run: terraform plan -out=tfplan
+        working-directory: terraform
 
       - name: Terraform Apply
         if : success()
         run: terraform apply -auto-approve tfplan
+        working-directory: terraform
