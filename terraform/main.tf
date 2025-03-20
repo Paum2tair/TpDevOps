@@ -35,7 +35,7 @@ resource "aws_lambda_function" "lambda" {
 //----------Définition du rôle de la lambda----------//
 
 resource "aws_iam_role" "lambda" {
-  name = "groupe1-lambda-role"
+  name = "groupe1-lambda-role-tp"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -55,7 +55,7 @@ resource "aws_iam_role" "lambda" {
 
 resource "aws_api_gateway_rest_api" "api" {
   name        = "groupe1-api"
-  description = "This is my API for my lambda"
+  description = "L'API pour la lambda du groupe 1"
 
 }
 
