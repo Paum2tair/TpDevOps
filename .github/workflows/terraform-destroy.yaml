@@ -22,6 +22,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-3
 
+      - name: Checkout state branch
+        uses: actions/checkout@v4
+        with:
+          ref: state  # Checkout sur la branche 'state' pour récupérer le fichier state
+          path: tfstate # le 'state' est dans le dossier tfstate
+
       - name: Terraform Init
         run: terraform init
         working-directory: terraform
@@ -33,3 +39,13 @@ jobs:
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
         working-directory: terraform
+
+      - name: Commit and push updated state to state branch
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git checkout state
+          git add terraform/terraform.tfstate
+          git commit -m "Update terraform state"
+          git push origin state
+        working-directory: tfstate
