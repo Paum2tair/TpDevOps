@@ -47,18 +47,10 @@ jobs:
       - name: copy terraform.tfstate from state branch to main branch
         run: cp state_branch/tfstate/terraform.tfstate terraform
 
-      - name: ls
-        run : ls
-
-      - name: cat
-        run : cat terraform/terraform.tfstate
-      
-
       - name: Commit and push updated state to state branch
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git checkout state
           git add terraform/terraform.tfstate
           git commit -m "Update terraform state"
           git push origin state
